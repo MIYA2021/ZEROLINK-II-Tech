@@ -1,0 +1,412 @@
+/*
+ * ZEROLINK Webサイトリニューアル - ホーム固有スタイル (Ⅱ-Tech 最終調整版)
+ * ファイル: assets/css/style.home.css
+ */
+
+/* 1. ヒーローセクション (#hero) */
+#hero {
+    /* ヘッダーの高さ90pxを考慮し、正確に全画面中央配置する */
+    min-height: calc(100vh - 90px);
+    padding-top: 0;
+    padding-bottom: 0;
+
+    background-color: var(--color-white);
+    /* 背景を純白に */
+    background-image: none;
+
+    position: relative;
+    overflow: hidden;
+
+    /* 垂直・水平中央配置 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content {
+    /* 垂直方向の中央配置が主になるため、paddingをシンプルに */
+    padding: 10vh 0;
+    flex-grow: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    position: relative;
+    z-index: 10;
+}
+
+/* 巨大なロゴ画像 (hero1.png) をテキストのように見せる */
+.hero-logo-img {
+    max-width: 900px;
+    /* デスクトップ表示の最大幅を調整 */
+    width: 80%;
+    height: auto;
+    margin-bottom: 30px;
+}
+
+.hero-copy {
+    font-size: 1.5rem;
+    font-weight: var(--font-light);
+    color: var(--color-dark-text);
+    margin-bottom: 50px;
+    line-height: 1.6;
+    letter-spacing: 0.05em;
+}
+
+/* 2. ACTIVITYセクション (#activity) - 新しいパネルデザイン */
+.activity-panel-list {
+    margin-top: 50px;
+    gap: 30px;
+    /* グリッド間の隙間 */
+}
+
+.activity-panel {
+    display: block;
+    padding: 30px;
+    text-decoration: none;
+    border: 1px solid var(--color-border);
+    /* ソリッドな境界線 */
+    background-color: var(--color-off-white);
+    transition: all 0.3s ease;
+    border-radius: 0;
+    /* 角丸を排除し、デジタル感を強調 */
+}
+
+/* ホバー時の「うわぁ」となるエフェクト: ソリッドな浮き上がりと影 */
+.activity-panel:hover {
+    transform: translateY(-5px);
+    /* やや明確な浮き上がり */
+    border-color: var(--color-dark-text);
+    /* ボーダーを黒く */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    /* 強い影 */
+    cursor: pointer;
+}
+
+.panel-icon {
+    font-size: 2.5rem;
+    color: var(--color-brand-blue);
+    margin-bottom: 20px;
+    transition: color 0.3s ease;
+}
+
+.activity-panel:hover .panel-icon {
+    color: var(--color-dark-text);
+    /* ホバーでアイコンカラーを反転 */
+}
+
+.panel-title {
+    font-size: 1.2rem;
+    font-weight: var(--font-bold);
+    color: var(--color-dark-text);
+    margin-bottom: 15px;
+    letter-spacing: 0.05em;
+}
+
+.panel-description {
+    font-size: 0.95rem;
+    color: var(--color-sub-text);
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.panel-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    font-weight: var(--font-bold);
+    color: var(--color-dark-text);
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+.activity-panel:hover .panel-link {
+    color: var(--color-brand-blue);
+}
+
+.panel-link i {
+    transition: transform 0.3s ease;
+}
+
+.activity-panel:hover .panel-link i {
+    transform: translateX(5px);
+}
+
+
+/* 3. WORKSセクション (#works) - 哲学コンセプトコンテンツ */
+
+.section-works-bg {
+    background-color: var(--color-off-white);
+}
+
+/* WORKS哲学ボックス（コンセプトを伝えるメインエリア） */
+.works-philosophy-box {
+    text-align: center;
+    margin-top: 60px;
+    padding: 60px 40px;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.philosophy-header {
+    margin-bottom: 50px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.philosophy-header h4 {
+    font-size: 2rem;
+    font-weight: var(--font-bold);
+    line-height: 1.4;
+    margin-bottom: 20px;
+    color: var(--color-dark-text);
+}
+
+/* ブランドカラーでの強調 */
+.highlight-blue {
+    color: var(--color-brand-blue);
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.philosophy-copy {
+    font-size: 1.1rem;
+    font-weight: var(--font-light);
+    color: var(--color-sub-text);
+    line-height: 1.7;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* 制作プロセスの3つの柱 */
+.philosophy-points {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    text-align: center;
+}
+
+.philosophy-point-item {
+    padding: 20px;
+}
+
+.philosophy-point-item i {
+    font-size: 2.5rem;
+    color: var(--color-brand-blue);
+    margin-bottom: 15px;
+    display: block;
+}
+
+.philosophy-point-item h5 {
+    font-size: 1rem;
+    font-weight: var(--font-bold);
+    margin-bottom: 10px;
+    color: var(--color-dark-text);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.philosophy-point-item p {
+    font-size: 0.9rem;
+    font-weight: var(--font-light);
+    color: var(--color-sub-text);
+    line-height: 1.6;
+}
+
+.philosophy-footer {
+    margin-top: 40px;
+    padding-top: 20px;
+}
+
+.philosophy-footer p {
+    font-size: 1rem;
+    font-weight: var(--font-normal);
+    color: var(--color-dark-text);
+}
+
+/* 4. CREATORSセクション (#creators) - 説明型コンテンツ */
+
+/* クリエイターコンセプトボックス（HOMEの中心的な説明エリア） */
+.creators-concept-box {
+    text-align: center;
+    margin-top: 70px;
+    padding: 60px;
+    background-color: var(--color-dark-text);
+    color: var(--color-white);
+    border: 3px solid var(--color-brand-blue);
+}
+
+.creators-concept-box h4 {
+    font-size: 1.8rem;
+    font-weight: var(--font-bold);
+    line-height: 1.4;
+    margin-bottom: 40px;
+    color: var(--color-brand-blue);
+}
+
+/* 3つの柱のグリッドレイアウト */
+.concept-points {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 40px;
+    text-align: left;
+}
+
+.concept-point-item {
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+.concept-point-item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.concept-point-item i {
+    font-size: 2rem;
+    color: var(--color-brand-blue);
+    margin-bottom: 15px;
+}
+
+.concept-point-item h5 {
+    font-size: 1.1rem;
+    font-weight: var(--font-bold);
+    margin-bottom: 10px;
+    color: var(--color-white);
+    letter-spacing: 0.05em;
+}
+
+.concept-point-item p {
+    font-size: 0.9rem;
+    font-weight: var(--font-light);
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+}
+
+.creators-cta-footer {
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.creators-cta-footer p {
+    font-size: 1.1rem;
+    font-weight: var(--font-normal);
+    color: var(--color-white);
+}
+
+/* 4.5. WORKS/CREATORSセクション用のサブCTAボタン (追記) */
+.cta-button-sub {
+    /* メインCTAとは逆の、シックな配色 */
+    background-color: var(--color-dark-text) !important;
+    color: var(--color-white) !important;
+    border-color: var(--color-dark-text) !important;
+}
+
+.cta-button-sub:hover {
+    /* ホバーでブランドカラーに光るエフェクト */
+    background-color: var(--color-white) !important;
+    color: var(--color-brand-blue) !important;
+    box-shadow: 0 0 0 3px var(--color-brand-shadow) !important;
+    transform: translateY(-3px) !important;
+    /* 軽く浮き上がらせる */
+}
+
+
+/* 5. CONTACTセクション (#contact) */
+.section-contact-bg {
+    background-color: var(--color-off-white);
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.contact-copy {
+    font-size: 1.3rem;
+    font-weight: var(--font-light);
+    margin-bottom: 40px;
+    line-height: 1.8;
+}
+
+/* 垂直リズムの定義 */
+.section-padding {
+    padding: 180px 5vw;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* 6. モバイル対応 */
+@media (max-width: 992px) {
+    .hero-logo-img {
+        max-width: 100%;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .hero-copy {
+        font-size: 1.2rem;
+    }
+
+    .activity-panel-list {
+        gap: 25px;
+    }
+
+    .activity-panel {
+        padding: 25px;
+    }
+
+    .panel-icon {
+        font-size: 2rem;
+    }
+
+    .contact-copy {
+        font-size: 1.1rem;
+    }
+
+    /* WORKSセクションのモバイル対応 */
+    .works-philosophy-box {
+        padding: 40px 20px;
+    }
+
+    .philosophy-header h4 {
+        font-size: 1.6rem;
+    }
+
+    .philosophy-copy {
+        font-size: 1rem;
+    }
+
+    .philosophy-points {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    /* CREATORSセクションのモバイル対応 */
+    .creators-concept-box {
+        padding: 40px 20px;
+    }
+
+    .creators-concept-box h4 {
+        font-size: 1.4rem;
+    }
+
+    .concept-points {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .concept-point-item {
+        text-align: left;
+    }
+
+    .creators-cta-footer p {
+        font-size: 0.95rem;
+    }
+}
