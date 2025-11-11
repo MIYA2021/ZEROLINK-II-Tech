@@ -14,10 +14,39 @@
     <link rel="stylesheet" href="assets/css/style.common.css">
     <link rel="stylesheet" href="assets/css/style.works.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script>
+        // デフォルトの同意状態を'denied'に設定（バナーが表示されている間）
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+
+        gtag('consent', 'default', {
+            'analytics_storage': 'denied',
+            'ad_storage': 'denied',
+            'wait_for_update': 500 /* ユーザー操作を待つ最大時間(ms) */
+        });
+
+        gtag('js', new Date());
+
+        // 'G-EZY3PEK0MH'は同意が得られた後でのみトラッキングが有効になります
+        gtag('config', 'G-EZY3PEK0MH'); 
+    </script>
 </head>
 
 <body>
+    <div id="cookie-consent-banner" class="cookie-box">
+        <div class="cookie-content">
+            <p class="cookie-message">
+                本サイトでは、サービス向上およびアクセス解析のため、Cookieを使用しています。詳細については<a href="/privacy-policy.html"
+                    class="cookie-link">プライバシーポリシー</a>をご確認ください。
+            </p>
+            <div class="cookie-actions">
+                <button id="cookie-reject-btn" class="cookie-btn cookie-btn-secondary">拒否する</button>
+                <button id="cookie-accept-btn" class="cookie-btn cookie-btn-primary">同意する</button>
+            </div>
+        </div>
+    </div>
     <div id="app">
+
 
         <header id="main-header">
             <a href="#hero" class="site-logo">ZEROLINK</a>
