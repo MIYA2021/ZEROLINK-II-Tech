@@ -1,0 +1,648 @@
+/*
+ * ZEROLINK Webサイトリニューアル - 共通スタイル (Ⅱ-Tech 最終調整版)
+ * コンセプト: ミニマル、ハイコントラスト、ソリッドなデジタル感 (Season II)
+ * ファイル: assets/css/style.common.css
+ * * --- 最終修正点（最小限）---
+ * 1. #mobile-menu-wrapper をPCで初期非表示に設定し、誤表示を防ぐ。
+ * 2. モバイルメニューの開閉ロジックを@media内に明確に定義。
+ * 3. モバイルフッターのアイテム整列を微調整。
+ */
+
+/* 1. 変数とフォント定義 */
+:root {
+    /* ベースカラー */
+    --color-white: #ffffff;
+    --color-off-white: #fcfcfc;
+    --color-border: #e8e8e8;
+    --color-dark-text: #0a0a0a;
+    --color-sub-text: #555555;
+
+    /* ブランドアクセント */
+    --color-brand-blue: #0077ff;
+    --color-brand-shadow: rgba(0, 119, 255, 0.25);
+
+    /* タグカラー */
+    --color-tag-pink: #ff00c6;
+    --color-tag-green: #37ff70;
+
+    /* フォント (Inter, Montserrat, Noto Sans JP) - より品格ある細いウェイトを強調 */
+    --font-family: 'Inter', 'Montserrat', 'Noto Sans JP', sans-serif;
+    --font-thin: 100;
+    --font-light: 300;
+    --font-normal: 400;
+    /* ベースの標準を400に */
+    --font-bold: 800;
+}
+
+/* 2. リセットと基本設定 */
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--color-off-white);
+    color: var(--color-dark-text);
+    line-height: 1.7;
+    overflow-x: hidden;
+    /* scroll-behavior: smooth; ← htmlに移動 */
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-dark-text);
+    transition: color 0.3s;
+}
+
+#app {
+    position: relative;
+    /* overflow-x: hidden; ← bodyに移動 */
+}
+
+.font-light {
+    font-weight: var(--font-light) !important;
+}
+
+/* 3. レイアウトとタイポグラフィ */
+/* 全体的に文字間を広げ、高級感と読みやすさを両立 */
+h1,
+h2,
+h3 {
+    font-weight: var(--font-light);
+    line-height: 1.2;
+    letter-spacing: 0.08em;
+}
+
+
+.section-header {
+    text-align: center;
+}
+
+.section-border-top {
+    border-top: 1px solid var(--color-border);
+}
+
+.grid-3col {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+/* grid-4col を追加/修正 */
+.grid-4col {
+    display: grid;
+    /* デスクトップ: 均等4列 */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    /* 既存の隙間を維持 */
+}
+
+/* メインセクションタイトル (<h2>) */
+.section-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: var(--font-bold);
+    color: var(--color-dark-text);
+    margin-bottom: 0.2em;
+}
+
+/* サブセクションタイトル (<h3>) - クリーンな区切り */
+.subsection-title {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: var(--font-light);
+    color: var(--color-sub-text);
+    text-align: center;
+    position: relative;
+    padding-bottom: 15px;
+    margin-bottom: 120px;
+    letter-spacing: 0.15em;
+}
+
+.subsection-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 1px;
+    background: var(--color-brand-blue);
+    box-shadow: 0 0 8px var(--color-brand-shadow);
+    margin: 15px auto 0;
+    transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.subsection-title:hover::after {
+    width: 140px;
+}
+
+
+/* 4. グローバルヘッダー */
+#main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5vw;
+    z-index: 1000;
+    transition: box-shadow 0.3s, height 0.3s, background-color 0.3s;
+    background-color: transparent;
+}
+
+#main-header.scrolled {
+    height: 70px;
+    box-shadow: 0 1px 15px rgba(0, 0, 0, 0.08);
+    background-color: rgba(255, 255, 255, 0.95);
+    /* スクロール時は半透明の白 */
+    backdrop-filter: blur(8px);
+}
+
+.site-logo {
+    font-size: 1.5rem;
+    font-weight: var(--font-bold);
+    letter-spacing: 0.08em;
+    color: var(--color-dark-text);
+}
+
+.pc-nav a {
+    text-decoration: none;
+    color: var(--color-sub-text);
+    margin-left: 40px;
+    font-size: 0.95rem;
+    position: relative;
+    padding-bottom: 5px;
+    transition: color 0.3s;
+    font-weight: var(--font-light);
+    letter-spacing: 0.05em;
+}
+
+.pc-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--color-brand-blue);
+    transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.pc-nav a:hover,
+.pc-nav a.active {
+    color: var(--color-brand-blue);
+}
+
+.pc-nav a:hover::after,
+.pc-nav a.active::after {
+    width: 100%;
+}
+
+/* 5. CTAボタン */
+.cta-button {
+    display: inline-block;
+    padding: 20px 50px;
+    background-color: var(--color-dark-text);
+    color: var(--color-white);
+    font-weight: var(--font-bold);
+    border: 2px solid var(--color-dark-text);
+    transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+    border-radius: 4px;
+    letter-spacing: 0.1em;
+}
+
+.cta-button:hover {
+    transform: translate(-3px, -3px);
+    background-color: var(--color-brand-blue);
+    border-color: var(--color-brand-blue);
+    box-shadow: 5px 5px 0 var(--color-dark-text), 0 10px 40px var(--color-brand-shadow);
+}
+
+/* ヘッダー用スモールCTAボタン */
+.cta-button-sm {
+    display: inline-block;
+    padding: 10px 25px;
+    background-color: var(--color-dark-text);
+    color: var(--color-white);
+    font-weight: var(--font-normal);
+    border: 1px solid var(--color-dark-text);
+    border-radius: 2px;
+    font-size: 0.9rem;
+    transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+.cta-button-sm:hover {
+    background-color: var(--color-brand-blue);
+    border-color: var(--color-brand-blue);
+    box-shadow: 0 0 10px var(--color-brand-shadow);
+}
+
+
+/* 6. Background Image Marquee アニメーション */
+@keyframes background-scroll-left {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: -1384px 0;
+    }
+}
+
+.background-marquee-line {
+    width: 100%;
+    height: 70px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-image: url('../img/line1.png');
+    background-repeat: repeat-x;
+    background-size: 1384px 70px;
+    animation: background-scroll-left 30s linear infinite;
+}
+
+@media (hover: hover) {
+    .background-marquee-line:hover {
+        animation-play-state: paused;
+    }
+}
+
+
+/* 7. フッター */
+#main-footer {
+    padding: 80px 5vw;
+    color: var(--color-sub-text);
+    border-top: 1px solid var(--color-border);
+    background-color: var(--color-off-white);
+}
+
+.footer-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.footer-copyright {
+    font-size: 0.8rem;
+    color: #aaaaaa;
+}
+
+.footer-links-left a {
+    color: var(--color-sub-text);
+    margin-right: 10px;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.footer-links-left a:hover {
+    color: var(--color-dark-text);
+}
+
+.link-separator {
+    margin-right: 10px;
+    color: #cccccc;
+}
+
+.footer-sns-right .sns-icon-link {
+    font-size: 1.2rem;
+    color: var(--color-sub-text);
+    margin-left: 20px;
+    transition: color 0.3s;
+}
+
+.footer-sns-right .sns-icon-link:hover {
+    color: var(--color-brand-blue);
+}
+
+/* 8. フォーム要素の共通スタイル (CONTACTページ対応) */
+.form-group {
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: var(--font-normal);
+    color: var(--color-dark-text);
+    margin-bottom: 8px;
+    letter-spacing: 0.05em;
+}
+
+/* 新しい必須マークアップに対応 */
+.form-group .required {
+    font-weight: var(--font-bold);
+    color: var(--color-brand-blue);
+    margin-left: 8px;
+    font-size: 0.9rem;
+    padding: 0;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: var(--font-light);
+    color: var(--color-dark-text);
+    background-color: var(--color-white);
+    transition: border-color 0.3s, box-shadow 0.3s;
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--color-brand-blue);
+    box-shadow: 0 0 0 3px var(--color-brand-shadow);
+    background-color: var(--color-off-white);
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-group select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%23555555" d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+}
+
+
+/* 9. モバイルメニュー */
+.js-mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: var(--color-dark-text);
+    cursor: pointer;
+    z-index: 1001;
+}
+
+/* ★★★ 【修正1】モバイルメニュー本体をPCで初期非表示にするために追記 ★★★ */
+#mobile-menu-wrapper {
+    display: none;
+}
+
+
+/* 10. メディアクエリ */
+@media (max-width: 992px) {
+
+    /* PC要素の非表示 */
+    .pc-nav {
+        display: none;
+    }
+
+    .js-mobile-menu-btn {
+        display: block;
+    }
+
+    .header-cta {
+        display: none;
+    }
+
+    .section-padding {
+        padding: 80px 4vw;
+    }
+
+    .grid-3col,
+    .grid-4col {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    /* フッターの調整 */
+    #main-footer {
+        padding: 20px 4vw;
+    }
+
+    .footer-inner {
+        /* モバイルでの縦並びと左揃え */
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        /* 要素間の間隔 */
+    }
+
+    .footer-links-left {
+        order: 1;
+        /* リンクを上に */
+    }
+
+    .footer-sns-right {
+        order: 2;
+        /* SNSを真ん中に */
+        margin-top: 5px;
+    }
+
+    .footer-copyright {
+        order: 3;
+        /* コピーライトを最後に */
+        margin-top: 5px;
+        text-align: left;
+    }
+
+    /* 9. モバイルメニュー */
+    .js-mobile-menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        /* font-sizeではなく、width/heightでボタンの領域を確保 */
+        width: 30px;
+        height: 30px;
+        position: relative;
+        color: var(--color-dark-text);
+        cursor: pointer;
+        z-index: 1001;
+        /* Font Awesomeのスタイルは不要になるため削除 */
+    }
+
+    /* ★★★ トグルアイコン（ハンバーガー/バツ印）のスタイル ★★★ */
+    .menu-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 25px;
+        /* 線の全体の幅 */
+        height: 18px;
+        /* 線の配置エリアの高さ */
+    }
+
+    .icon-line {
+        display: block;
+        position: absolute;
+        height: 2px;
+        /* 線の太さ */
+        width: 100%;
+        background-color: var(--color-dark-text);
+        /* 線の色 */
+        border-radius: 1px;
+        opacity: 1;
+        transform: rotate(0deg);
+        /* トグル時のアニメーション速度 */
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    /* 線の初期位置設定（ハンバーガーの状態） */
+    .icon-line.line-1 {
+        top: 0px;
+    }
+
+    .icon-line.line-2 {
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .icon-line.line-3 {
+        top: 100%;
+        transform: translateY(-100%);
+    }
+
+
+    /* PCで初期非表示（@mediaの外で定義） */
+    #mobile-menu-wrapper {
+        display: none;
+    }
+
+
+    /* 10. メディアクエリ */
+    @media (max-width: 992px) {
+
+        /* PC要素の非表示 */
+        .pc-nav {
+            display: none;
+        }
+
+        .js-mobile-menu-btn {
+            display: block;
+        }
+
+        .header-cta {
+            display: none;
+        }
+
+        /* ... (中略：セクションパディング、フッターの調整) ... */
+
+
+        /* ========================================= */
+        /* ★★★ モバイルメニュー表示ロジック ★★★ */
+        /* ========================================= */
+
+        #mobile-menu-wrapper {
+            /* モバイルでのみブロック表示を有効化 */
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: var(--color-off-white);
+            padding-top: 70px;
+            /* モバイル時のヘッダー高さに合わせる */
+            z-index: 999;
+            overflow-y: auto;
+
+            /* 初期状態：非表示（画面右外） */
+            visibility: hidden;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.4s cubic-bezier(0.65, 0.05, 0.36, 1);
+        }
+
+        /* メニューオープン時（#appに.menu-openが付与された時）の表示ルール */
+        #app.menu-open #mobile-menu-wrapper {
+            visibility: visible;
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* 開いている時はボディのスクロールを固定 (オーバーレイ用) */
+        #app.menu-open {
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        /* ★★★ メニューが開いた時（バツ印）のアイコンの状態 ★★★ */
+        #app.menu-open .icon-line.line-1 {
+            top: 50%;
+            /* 中央に移動 */
+            transform: translateY(-50%) rotate(45deg);
+            /* 回転させてバツ印の上半分 */
+        }
+
+        #app.menu-open .icon-line.line-2 {
+            opacity: 0;
+            /* 中央の線を非表示にする */
+            transform: translateX(-10px);
+            /* 消えるときに少し左に動かす */
+        }
+
+        #app.menu-open .icon-line.line-3 {
+            top: 50%;
+            /* 中央に移動 */
+            transform: translateY(-50%) rotate(-45deg);
+            /* 回転させてバツ印の下半分 */
+        }
+
+
+        /* モバイルナビゲーションのデザイン */
+        .mobile-nav {
+            display: flex;
+            flex-direction: column;
+            padding: 20px 4vw;
+            gap: 30px;
+        }
+
+        .mobile-nav a {
+            font-size: 1.5rem;
+            font-weight: var(--font-bold);
+            color: var(--color-dark-text);
+            border-bottom: 1px solid var(--color-border);
+            padding-bottom: 15px;
+            padding-top: 5px;
+            letter-spacing: 0.1em;
+            transition: color 0.2s;
+        }
+
+        .mobile-nav a:hover {
+            color: var(--color-brand-blue);
+        }
+
+        .mobile-nav a.mobile-cta {
+            /* JOINボタンのスタイル */
+            margin-top: 10px;
+            border: none;
+            align-self: flex-start;
+            padding: 10px 25px;
+            background-color: var(--color-dark-text);
+            color: var(--color-white);
+            font-size: 0.9rem;
+            border-radius: 2px;
+        }
+
+        .mobile-nav a.mobile-cta:hover {
+            background-color: var(--color-brand-blue);
+            box-shadow: none;
+        }
+    }
+}
