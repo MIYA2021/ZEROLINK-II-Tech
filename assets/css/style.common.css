@@ -646,3 +646,103 @@ h3 {
         }
     }
 }
+
+/* style.home.css または style.common.css に追記 */
+
+/* クッキー同意バナー (左下ボックス型) */
+#cookie-consent-banner {
+    /* 画面左下に固定 */
+    position: fixed;
+    bottom: 20px;
+    /* 下から20px */
+    left: 20px;
+    /* 左から20px */
+    z-index: 10000;
+    /* 最前面に表示 */
+
+    /* ボックスのデザイン */
+    max-width: 350px;
+    padding: 20px;
+    background-color: var(--color-white, #ffffff);
+    border-radius: 8px;
+    /* 角丸 */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    /* クリーンな影 */
+
+    /* 初期状態を非表示にするトランジション設定 */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.5s ease-out;
+}
+
+/* 表示状態 */
+#cookie-consent-banner.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.cookie-message {
+    font-size: 0.85rem;
+    color: var(--color-dark-text, #333);
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.cookie-link {
+    color: var(--color-brand-blue, #007bff);
+    text-decoration: underline;
+    font-weight: var(--font-medium, 500);
+}
+
+.cookie-actions {
+    display: flex;
+    justify-content: flex-end;
+    /* ボタンを右寄せ */
+    gap: 10px;
+}
+
+.cookie-btn {
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: var(--font-medium, 500);
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+    white-space: nowrap;
+}
+
+/* プライマリボタン (同意) */
+.cookie-btn-primary {
+    background-color: var(--color-brand-blue, #007bff);
+    color: var(--color-white, #ffffff);
+    border: 1px solid var(--color-brand-blue, #007bff);
+}
+
+.cookie-btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* セカンダリボタン (拒否) */
+.cookie-btn-secondary {
+    background-color: transparent;
+    color: var(--color-dark-text, #333);
+    border: 1px solid var(--color-sub-text, #ccc);
+}
+
+.cookie-btn-secondary:hover {
+    border-color: var(--color-dark-text, #333);
+}
+
+/* モバイル対応 (左下ボックスがコンテンツを邪魔しないよう調整) */
+@media (max-width: 768px) {
+    #cookie-consent-banner {
+        left: 50%;
+        transform: translate(-50%, 0);
+        /* 中央寄せ */
+        bottom: 15px;
+        max-width: 90%;
+        /* 画面幅に合わせて調整 */
+    }
+}
