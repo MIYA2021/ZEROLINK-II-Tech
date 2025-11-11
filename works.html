@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>WORKS | ZEROLINK 実績紹介</title>
+    <meta name="description" content="ZEROLINKが関わった主要なプロジェクトと実績をご紹介します。ESPORTS、VTuber、AIなど多岐にわたる分野の成果をご覧ください。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Montserrat:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.common.css">
+    <link rel="stylesheet" href="assets/css/style.works.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <div id="app">
+
+        <header id="main-header">
+            <a href="#hero" class="site-logo">ZEROLINK</a>
+            <nav class="pc-nav">
+                <a href="home.html#hero">HOME</a>
+                <a href="home.html#activity">ACTIVITY</a>
+                <a href="works.html">WORKS</a>
+                <a href="creators.html">CREATORS</a>
+                <a href="contact.html">CONTACT</a>
+            </nav>
+            <a href="contact.html" class="cta-button-sm header-cta">JOIN</a>
+            <button class="js-mobile-menu-btn" aria-label="モバイルメニューを開く">
+                <div class="menu-icon">
+                    <span class="icon-line line-1"></span>
+                    <span class="icon-line line-2"></span>
+                    <span class="icon-line line-3"></span>
+                </div>
+            </button>
+        </header>
+
+        <div id="mobile-menu-wrapper" class="mobile-menu-inner">
+            <nav class="mobile-nav">
+                <a href="home.html#hero">HOME</a>
+                <a href="home.html#activity">ACTIVITY</a>
+                <a href="works.html">WORKS</a>
+                <a href="creators.html">CREATORS</a>
+                <a href="contact.html">CONTACT</a>
+                <a href="contact.html" class="mobile-cta">JOIN</a>
+            </nav>
+        </div>
+
+        <main>
+
+            <section id="works-hero" class="section-padding">
+                <div class="section-header">
+                    <h1 class="section-title">WORKS</h1>
+                    <h2 class="subsection-title">プロジェクト実績</h2>
+                </div>
+            </section>
+
+            <nav id="filter-bar">
+                <div class="filter-group filter-type-category">
+                    <p class="filter-label">CATEGORY:</p>
+                    <ul class="filter-capsule-list">
+                        <li><button class="filter-btn is-active" data-filter-type="category"
+                                data-filter-value="all">ALL</button></li>
+                        <li><button class="filter-btn" data-filter-type="category"
+                                data-filter-value="esports">ESPORTS</button></li>
+                        <li><button class="filter-btn" data-filter-type="category"
+                                data-filter-value="vtuber">VTUBER</button></li>
+                        <li><button class="filter-btn" data-filter-type="category"
+                                data-filter-value="ai-tech">AI/TECH</button></li>
+                        <li><button class="filter-btn" data-filter-type="category"
+                                data-filter-value="event">EVENT</button></li>
+                        <li><button class="filter-btn" data-filter-type="category"
+                                data-filter-value="design">DESIGN</button></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <section id="works-grid" class="section-padding">
+                <div class="works-card-list grid-3col" id="works-list-container">
+                    <p id="loading-message">実績データを読み込み中です...</p>
+                </div>
+            </section>
+
+        </main>
+
+        <footer id="main-footer">
+            <div class="footer-inner">
+                <div class="footer-links-left">
+                    <a href="#">Privacy Policy</a>
+                    <span class="link-separator">/</span>
+                    <a href="#">Terms of Service</a>
+                </div>
+                <p class="footer-copyright">&copy; 2025 ZEROLINK. All Rights Reserved.</p>
+                <div class="footer-sns-right">
+                    <a href="#" class="sns-icon-link" aria-label="X (旧Twitter)"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="sns-icon-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="sns-icon-link" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <script src="assets/js/vender/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/script.common.js"></script>
+    <script src="assets/js/script.works.js"></script>
+</body>
+
+</html>
