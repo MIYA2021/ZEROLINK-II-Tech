@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>CONTACT | お問い合わせ - ZEROLINK</title>
+    <meta name="description" content="ZEROLINKへのプロジェクト相談、採用、その他のお問い合わせはこちらのフォームより受け付けております。">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Montserrat:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/style.common.css">
+    <link rel="stylesheet" href="assets/css/style.contact.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body id="app">
+
+    <header id="main-header">
+        <a href="home.html" class="site-logo">ZEROLINK</a>
+        <nav class="pc-nav">
+            <a href="home.html#hero">HOME</a>
+            <a href="home.html#activity">ACTIVITY</a>
+            <a href="works.html">WORKS</a>
+            <a href="creators.html">CREATORS</a>
+            <a href="contact.html" class="active">CONTACT</a>
+        </nav>
+        <a href="contact.html" class="cta-button-sm header-cta active">JOIN</a>
+        <button class="js-mobile-menu-btn" aria-label="モバイルメニューを開く">
+            <div class="menu-icon">
+                <span class="icon-line line-1"></span>
+                <span class="icon-line line-2"></span>
+                <span class="icon-line line-3"></span>
+            </div>
+        </button>
+    </header>
+
+    <div id="mobile-menu-wrapper" class="mobile-menu-inner">
+        <nav class="mobile-nav">
+            <a href="home.html#hero">HOME</a>
+            <a href="home.html#activity">ACTIVITY</a>
+            <a href="works.html">WORKS</a>
+            <a href="creators.html">CREATORS</a>
+            <a href="contact.html" class="active">CONTACT</a>
+            <a href="contact.html" class="mobile-cta">JOIN</a>
+        </nav>
+    </div>
+
+    <main id="main-content">
+
+        <section id="contact-form-section" class="section-padding section-border-top">
+            <div class="section-header">
+                <h1 class="section-title">CONTACT</h1>
+                <h2 class="subsection-title">プロジェクトのご相談、採用、その他のお問い合わせ</h2>
+            </div>
+
+            <div class="contact-container">
+                <p style="text-align: center; margin-bottom: 30px; line-height: 1.8; color: var(--color-dark-text);">
+                    以下のフォームに必要事項をご記入の上、送信してください。
+                </p>
+
+                <form class="contact-form" action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name">お名前 / 会社名:<span class="required">*</span></label>
+                        <input type="text" id="name" name="name" required placeholder="例: ZEROLINK株式会社 / 山田 太郎">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">メールアドレス:<span class="required">*</span></label>
+                        <input type="email" id="email" name="email" required placeholder="例: contact@zerolink.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="inquiry-type">お問い合わせ種別:<span class="required">*</span></label>
+                        <select id="inquiry-type" name="inquiry-type" required>
+                            <option value="" disabled selected>選択してください</option>
+                            <option value="project">新規プロジェクトのご相談</option>
+                            <option value="creator">クリエイター応募・所属希望</option>
+                            <option value="recruit">採用・中途採用について</option>
+                            <option value="ir">IR・メディア関係</option>
+                            <option value="other">その他</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">件名:</label>
+                        <input type="text" id="subject" name="subject" placeholder="お問い合わせの件名をご記入ください">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">お問い合わせ内容:<span class="required">*</span></label>
+                        <textarea id="message" name="message" rows="6" required
+                            placeholder="お問い合わせ内容を具体的にご記入ください。"></textarea>
+                    </div>
+
+                    <button type="submit" class="cta-button submit-button">送信</button>
+                </form>
+
+                <div id="form-messages" class="form-messages"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="main-footer">
+        <div class="footer-inner">
+            <div class="footer-links-left">
+                <a href="#">Privacy Policy</a>
+                <span class="link-separator">/</span>
+                <a href="#">Terms of Service</a>
+            </div>
+            <p class="footer-copyright">&copy; 2025 ZEROLINK. All Rights Reserved.</p>
+            <div class="footer-sns-right">
+                <a href="#" class="sns-icon-link" aria-label="X (旧Twitter)"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="sns-icon-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="#" class="sns-icon-link" aria-label="Discord"><i class="fab fa-discord"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/script.common.js"></script>
+
+</body>
+
+</html>
