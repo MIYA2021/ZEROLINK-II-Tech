@@ -1,3 +1,86 @@
+// script.common.js または script.home.js に追記
+
+/**
+ * Cookie同意バナーの表示・動作ロジック
+ */
+function setupCookieConsent() {
+    const consentBox = document.getElementById('cookie-consent-banner');
+    if (!consentBox) return; // バナー要素がない場合は終了
+
+    const acceptBtn = document.getElementById('cookie-accept-btn');
+    const rejectBtn = document.getElementById('cookie-reject-btn');
+    const consentStatus = localStorage.getItem('cookie_consent_status');
+
+    /**
+     * Google Analyticsの同意状態を更新する
+     * @param {string} status - 'granted' または 'denied'
+     */
+    function updateGaConsent(status) {
+        if (typeof gtag === 'function') {
+            gtag('consent', 'update', {
+                'analytics_storage': status,
+                'ad_storage': status
+            });
+            if (status === 'granted') {
+                console.log('Cookie同意: 許可 (GAトラッキング有効)');
+            } else {
+                console.log('Cookie同意: 拒否 (GAトラッキング無効)');
+            }
+        }
+    }
+
+    /**
+     * 同意状態をLocalStorageに保存し、GAを更新する
+     * @param {string} status - 'accepted' または 'rejected'
+     */
+    function setConsent(status) {
+        localStorage.setItem('cookie_consent_status', status);
+
+        if (status === 'accepted') {
+            updateGaConsent('granted');
+        } else if (status === 'rejected') {
+            updateGaConsent('denied');
+        }
+        consentBox.classList.remove('show');
+    }
+
+    // 1. 同意状態をチェック
+    if (consentStatus === 'accepted') {
+        updateGaConsent('granted');
+        return;
+    }
+
+    if (consentStatus === 'rejected') {
+        updateGaConsent('denied');
+        return;
+    }
+
+    // 2. 初回アクセス時、バナーを表示
+    setTimeout(() => {
+        consentBox.classList.add('show');
+    }, 1000); // ロード後に1秒遅延させて表示
+
+    // 3. イベントリスナーを設定
+    if (acceptBtn) {
+        acceptBtn.addEventListener('click', () => setConsent('accepted'));
+    }
+    if (rejectBtn) {
+        rejectBtn.addEventListener('click', () => setConsent('rejected'));
+    }
+}
+
+// 既存のDOMContentLoadedまたはjQuery ready()イベント内で実行
+document.addEventListener('DOMContentLoaded', setupCookieConsent);
+
+// ※ jQueryを使用している場合は、以下のように置き換えてください
+/*
+$(document).ready(function () {
+    // 既存の初期化処理
+    // ...
+    setupCookieConsent(); // ここで呼び出す
+});
+*/
+
 /**
  * ZEROLINK 共通スクリプト
  * 依存関数（setupMobileMenuなど）はここで定義され、
@@ -102,3 +185,4 @@ document.addEventListener('DOMContentLoaded', () => {
     setupGlobalHeader();
     initializeDynamicGradient();
 });
+
