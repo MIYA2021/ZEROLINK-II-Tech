@@ -1,0 +1,164 @@
+/*
+ * ZEROLINK Webサイトリニューアル - コンテンツページ固有スタイル
+ * ファイル: assets/css/style.content.css
+ * * --- デザインコンセプト ---
+ * 1. ZEROLINKの持つモダンでハイコントラストなトーンを維持。
+ * 2. 情報を構造化するため、見出しと本文の視覚的分離を明確にする。
+ * 3. ブランドカラー(青)をセクションタイトルに強く適用。
+ */
+
+/* ---------------------------------------------------- */
+/* 1. ページ全体のレイアウトと基本設定 */
+/* ---------------------------------------------------- */
+.section-padding {
+    /* 共通CSSからの継承: ページ全体の左右余白と最大幅を適用 */
+    padding-top: 150px;
+    padding-bottom: 100px;
+}
+
+.content-page-layout {
+    /* コンテンツの可読性を高めるため、最大幅を900pxに固定 */
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+
+/* ---------------------------------------------------- */
+/* 2. タイトルと更新日 */
+/* ---------------------------------------------------- */
+
+.page-title {
+    font-size: 3.2rem;
+    font-weight: var(--font-bold);
+    color: var(--color-dark-text);
+    margin-bottom: 15px;
+    line-height: 1.1;
+}
+
+.last-updated {
+    font-size: 0.85rem;
+    font-weight: var(--font-medium);
+    color: var(--color-sub-text);
+    margin-bottom: 80px;
+    /* タイトルとの間に大きな余白 */
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+
+/* ---------------------------------------------------- */
+/* 3. セクション見出しと本文 */
+/* ---------------------------------------------------- */
+
+.policy-section,
+.terms-section {
+    margin-bottom: 60px;
+    /* セクション間の余白を広げ、区切りを明確に */
+}
+
+/* メインセクション見出し (H2) - ブランドカラーを強調 */
+.policy-section h2,
+.terms-section h2 {
+    font-size: 1.7rem;
+    font-weight: var(--font-bold);
+    /* ブランドブルーを強く適用 */
+    color: var(--color-brand-blue);
+    /* デジタル感を出すための強調 */
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+
+    margin-top: 35px;
+    margin-bottom: 20px;
+
+    /* セクションを際立たせるための左側の強調線 */
+    padding-left: 20px;
+    border-left: 5px solid var(--color-brand-blue);
+}
+
+/* 本文 (p) */
+.policy-section p,
+.terms-section p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--color-dark-text);
+    margin-bottom: 20px;
+}
+
+
+/* ---------------------------------------------------- */
+/* 4. リストの調整 */
+/* ---------------------------------------------------- */
+
+.policy-section ol,
+.terms-section ul {
+    /* リスト全体を左揃えに */
+    padding-left: 40px;
+    margin-bottom: 30px;
+}
+
+.policy-section ol li,
+.terms-section ul li {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-dark-text);
+    margin-bottom: 12px;
+    /* リストアイテム間の余白 */
+}
+
+.terms-section ul li::marker {
+    color: var(--color-brand-blue);
+    /* リストのマーカー（点）をブランドカラーに */
+    font-weight: var(--font-bold);
+}
+
+
+/* ---------------------------------------------------- */
+/* 5. メディアクエリ (Mobile) */
+/* ---------------------------------------------------- */
+@media (max-width: 768px) {
+    .section-padding {
+        padding-top: 80px;
+        padding-bottom: 50px;
+    }
+
+    .content-page-layout {
+        /* モバイルでは画面幅いっぱいに広げ、左右の余白を共通設定に依存 */
+        max-width: 100%;
+        padding: 0 var(--section-padding-x);
+    }
+
+    .page-title {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+    }
+
+    .last-updated {
+        margin-bottom: 40px;
+    }
+
+    .policy-section,
+    .terms-section {
+        margin-bottom: 40px;
+    }
+
+    .policy-section h2,
+    .terms-section h2 {
+        font-size: 1.4rem;
+        margin-top: 25px;
+        margin-bottom: 15px;
+        padding-left: 15px;
+    }
+
+    .policy-section p,
+    .terms-section p {
+        font-size: 0.95rem;
+        margin-bottom: 15px;
+    }
+
+    .policy-section ol,
+    .terms-section ul {
+        padding-left: 25px;
+    }
+}
