@@ -4,18 +4,21 @@
  */
 
 /* 1. CONTACTページのレイアウト */
-#contact-form-section {
+/* IDを #contact-main-content に変更し、上部の余白を調整 */
+#contact-main-content {
     max-width: 800px;
     /* フォームの幅を狭くして集中させる */
     margin: 0 auto;
-    padding-top: 150px;
-    /* ヒーローのような余白を確保 */
+    padding-top: 120px;
+    /* 上部の余白を150pxから120pxに調整 */
     padding-bottom: 150px;
     text-align: center;
 }
 
 .section-header {
-    margin-bottom: 50px;
+    /* タイトルとフォームコンテナの間の余白を調整 */
+    margin-bottom: 60px;
+    /* 50pxから60pxに増やし、視覚的な分離を明確にする */
 }
 
 .section-header .subsection-title {
@@ -73,7 +76,9 @@
 
 /* モバイル調整 */
 @media (max-width: 768px) {
-    #contact-form-section {
+
+    /* IDセレクタも修正 */
+    #contact-main-content {
         padding-top: 80px;
         padding-bottom: 80px;
     }
