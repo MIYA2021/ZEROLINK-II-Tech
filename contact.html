@@ -80,40 +80,41 @@
 
     <main id="main-content">
 
-        <section id="contact-form-section" class="section-padding section-border-top">
+        <section id="contact-main-content" class="section-padding section-border-top">
             <div class="section-header">
                 <h1 class="section-title">CONTACT</h1>
                 <h2 class="subsection-title">プロジェクトのご相談、採用、その他のお問い合わせ</h2>
             </div>
 
             <div class="contact-container">
-                <p style="text-align: center; margin-bottom: 30px; line-height: 1.8; color: var(--color-dark-text);">
-                    以下のフォームに必要事項をご記入の上、送信してください。
-                </p>
-
-                <form class="contact-form" action="#" method="POST">
+                <form id="contactForm" class="contact-form" method="POST"
+                    action="https://script.google.com/macros/s/AKfycbzoOBuHRYqj_wR9HKFz1iyzxT0N9GEd7HA0GNUmGL7o3lrZZabEIEAE4v3v_cr7Wd9-Qw/exec">
                     <div class="form-group">
-                        <label for="name">お名前 / 会社名:<span class="required">*</span></label>
-                        <input type="text" id="name" name="name" required placeholder="例: ZEROLINK株式会社 / 山田 太郎">
+                        <label for="name">お名前:<span class="required">*</span></label>
+                        <input type="text" id="name" name="name" required placeholder="ZEROLINK 太郎">
+                        <input type="hidden" name="source" value="ZEROLINK">
                     </div>
+
                     <div class="form-group">
                         <label for="email">メールアドレス:<span class="required">*</span></label>
-                        <input type="email" id="email" name="email" required placeholder="例: contact@zerolink.com">
+                        <input type="email" id="email" name="email" required placeholder="your.email@example.com">
                     </div>
+
                     <div class="form-group">
-                        <label for="inquiry-type">お問い合わせ種別:<span class="required">*</span></label>
-                        <select id="inquiry-type" name="inquiry-type" required>
-                            <option value="" disabled selected>選択してください</option>
-                            <option value="project">新規プロジェクトのご相談</option>
-                            <option value="creator">クリエイター応募・所属希望</option>
-                            <option value="recruit">採用・中途採用について</option>
-                            <option value="ir">IR・メディア関係</option>
-                            <option value="other">その他</option>
+                        <label for="subject">件名:<span class="required">*</span></label>
+                        <select id="subject" name="subject_dropdown" required>
+                            <option value="">選択してください</option>
+                            <option value="新規プロジェクトのご相談">新規プロジェクトのご相談</option>
+                            <option value="ZEROLINKついて">ZEROLINKについて</option>
+                            <option value="クリエイター応募・所属希望">クリエイター応募・所属希望</option>
+                            <option value="コラボレーションのご提案">コラボレーションのご提案</option>
+                            <option value="その他">その他</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label for="subject">件名:</label>
-                        <input type="text" id="subject" name="subject" placeholder="お問い合わせの件名をご記入ください">
+
+                    <div class="form-group" id="otherSubjectGroup" style="display: none;">
+                        <label for="otherSubject">その他の件名:<span class="required">*</span></label>
+                        <input type="text" id="otherSubject" name="other_subject" placeholder="具体的な件名を入力してください">
                     </div>
                     <div class="form-group">
                         <label for="message">お問い合わせ内容:<span class="required">*</span></label>
@@ -121,7 +122,7 @@
                             placeholder="お問い合わせ内容を具体的にご記入ください。"></textarea>
                     </div>
 
-                    <button type="submit" class="cta-button submit-button">送信</button>
+                    <button type="submit" class="neon-button submit-button">送信</button>
                 </form>
 
                 <div id="form-messages" class="form-messages"></div>
@@ -148,6 +149,7 @@
 
     <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
     <script src="assets/js/script.common.js"></script>
+    <script src="assets/js/script.contact.js"></script>
 
 </body>
 
